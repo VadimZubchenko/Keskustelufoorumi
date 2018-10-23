@@ -1,4 +1,4 @@
-# My Git Notes
+# My Git Notes v1.1
 
 Detailed notes showing how to use Git.
 
