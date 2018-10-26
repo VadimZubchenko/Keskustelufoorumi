@@ -1,4 +1,4 @@
-# Introduction to Git
+****``****# Introduction to Git
 
 In this worksheet you will learn the basic principles behind the most popular version control system. You will also be introduced to a code editor that runs in your web browser. This lab shows you how to work with a local repository.
 

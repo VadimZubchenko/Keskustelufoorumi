@@ -1,20 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+    </style>
     <title>Comparison of three computers</title>
     <meta charset="utf-8" />
 </head>
 <body>
 <p>A comparison of technical data of three popular 80's home computers:</p>
 
-<table>
+<table style="width:50%">
     <caption>Technical comparison</caption>
     <thead>
     <tr>
         <th>Property</th>
         <th>Commodore 64</th>
         <th>ZX Spectrum</th>
-        <th>Commodore VIC-20</th>    
+        <th>Commodore VIC-20</th>
+        <th>Spectravideo SV-328</th>
     </tr>
     </thead>
     <tbody>
@@ -23,18 +34,30 @@
         <td>MOS Technology 6510</td>
         <td>Zilog Z80</td>
         <td>MOS Technology 6502</td>
+        <td>Zilog Z80A CPU</td>
     </tr>
     <tr>
         <td>RAM</td>
         <td>64 kilobytes</td>
         <td>16 or 64 kilobytes</td>
         <td>5 kilobytes</td>
+        <td>64kB RAM</td>
     </tr>
     <tr>
         <td>ROM</td>
         <td>20 kilobytes</td>
         <td>16 kilobytes</td>
         <td>16 kilobytes</td>
+        <td>32kB ROM</td>
+    </tr>
+    <tr>
+        <td>Killer game</td>
+        <td colspan="2">Jet Set Willy</td>
+        <td colspan="2">Jelly Monsters</td>
+    </tr>
+    <tr>
+        <td>Main usage</td>
+        <td colspan="4">home computing</td>
     </tr>
     </tbody>
 </table>
