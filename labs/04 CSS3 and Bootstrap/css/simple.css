@@ -1,0 +1,65 @@
+p::first-letter {
+    font-size:8em;
+}
+p::first-line {
+    font-weight: bold;
+}
+body {
+
+    font-family: Arial, Verdana, sans-serif;
+    background-color: rgba(25,200,25,0.6);
+    //font-weight: bolder;
+
+}
+h1 {
+    color: rgba(200,30,120,0.8);
+    font-size: 4.0em;
+    font-weight: bolder;
+    text-align: center;
+    font-style: oblique;
+}
+h2 {
+
+    text-decoration: underline;
+    color: rgb(0,105,225);
+    font-weight: bold;
+
+}
+article {
+    color: #710909; align-content: baseline;
+}
+ul, ol {
+    text-indent: 30px;
+    border-style: solid;
+    color: rgb(230,45,230);
+    font-size: 0.8em;
+}
+p {
+    text-indent: 30px;
+}
+dt {
+    text-indent: 30px;
+    color: rgba(200,30,120,0.8);
+    font-size: 150%;
+    font-weight: bolder;
+}
+figure {
+    color: black;
+    font-size: 0.7em;
+    font-weight:bold;
+}
+.copyright_notice {
+    color: black;
+    font-size: 0.8em;
+    font-style: oblique;
+    font-weight: lighter;
+    text-indent: 0cm;
+}
+#special {
+    font-size: 0.8em;
+    color: yellowgreen;
+    font-style: italic;
+    border-left: 2px solid black;
+    margin-left: 40px;
+    padding-left: 10px;
+}

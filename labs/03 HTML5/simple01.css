@@ -1,0 +1,21 @@
+body {
+    font-family: Arial, Verdana, sans-serif; background-color: #a88a8a;
+}
+h2 {
+    color: orangered;
+    font-weight: bolder;
+    background-color: #FFA500
+
+}
+h3 {
+    color: blue;
+    font-weight: bold;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
