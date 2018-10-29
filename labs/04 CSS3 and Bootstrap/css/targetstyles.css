@@ -5,6 +5,7 @@ ol > li {
     color: green;
 }
 ul li ul {
+    color: red;
     font-weight: bold;
 }
 ul li ul li ul {

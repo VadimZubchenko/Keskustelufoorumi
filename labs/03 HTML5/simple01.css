@@ -1,3 +1,26 @@
+figure {
+    margin: 50px;
+    text-align: center;
+    width: 180px;
+
+}
+figcaption {
+    font-size: small;
+}
+section#Intro{
+    float: left;
+    margin: 2em;
+    padding: 1em;
+}
+section#Data{
+    float: right;
+    margin: 2em;
+    padding: 1em;
+}
+figure#floating {
+    float: left;
+}
+
 body {
     font-family: Arial, Verdana, sans-serif; background-color: #a88a8a;
 }
