@@ -63,3 +63,10 @@ figure {
     margin-left: 40px;
     padding-left: 10px;
 }
+.basic {
+    text-indent: 30px;
+    border-style: solid;
+    color: white;
+    font-size: 0.8em;
+
+}

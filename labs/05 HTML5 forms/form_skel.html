@@ -4,60 +4,53 @@
 	This page demonstrates a form.
 	-->
 	<head>
+        <link href="css/form.css" type="text/css" rel="stylesheet" />
 		<meta charset="utf-8"/>
 		<title>Demonstrating HTML forms</title>
 	</head>
 	
 	<body>
 		<h1>Turnitin</h1>
-		<form  lang="fi" action="">
-			<div>
-				Name: <input type="text" name="studentname"/>
-			</div>
-			<div>
-				Student id: <input type="text" name="id"  />
-			</div>
-			<div>
-				Email:
-				<!--
-				Make an input named "email"
-				-->
-			</div>
-			<div>
-				Assignment:
-				<!--
-				Make an input named "assignment"
-				-->
-				
-			</div>
+		<form lang="fi" action="">
+            <fieldset class="studentData">
+                <legend>Student data</legend>
+				<label><input type="text" name="studentname" placeholder="name" /></label><br><br>
+                <label><input type="number" pattern="\d{7}" name="id" placeholder="id"/></label><br><br>
+                <label><input type="email"  pattern="\-\@\-.-" name="email" placeholder="email" oninvalid="this.setCustomValidity('Please Enter valid email')"
+                              oninput="setCustomValidity('')"/></label>
+            </fieldset>
 
-			<div>
-				Code:
-				<!--
-				Make an input named "code" which is a text area to put student's code into.
-				-->
-				
-			</div>
-			<div>
-				Cheat:
-			<!--
-				Make an input named "cheat" which is a check box the student must check.
-			-->
-			</div>
-			<div>
-				Pay:
+            <fieldset class="studentData2">
+                <legend>Entry data</legend>
+				<label><input type="text" name="assignment" placeholder="assignment"/></label><br><br>
+                <label><input type="text" name="code" placeholder="give code" /></label><br><br>
+                <label>Cheat:<input type="checkbox" name="cheat" /></label>
+            </fieldset>
+			<fieldset class="studentData3">
+				<legend>Payment</legend>
+				<label><input type="radio" name="payment" value="visa" checked >Visa</label><br><br>
+				<label><input type="radio" name="payment" value="paypal">Paypal</label><br><br>
+				<label><input type="radio" name="payment" value="mastercard">MasterCard</label>
+
 			<!--
 				Make an input named "payment" which is a radio box with possible values of visa, paypal, mastercard
 			-->
-			</div>
-			<div>
-				Score:
-			<!--
-				Make an input named "score" which is a list of choices for the score 
-			-->
-			</div>
-			<input type="submit" />
-		</form>
+			</fieldset>
+			<fieldset class="studentData4">
+                <legend>Student score</legend>
+
+                    <label><input type="radio" name="score" value="1" checked >1</label>
+                    <label><input type="radio" name="score" value="2">2</label>
+                    <label><input type="radio" name="score" value="3">3</label>
+                    <label><input type="radio" name="score" value="4">4</label>
+                    <label><input type="radio" name="score" value="5">5</label><br>
+
+			</fieldset>
+
+            <button class="button button1" onclick="submit">Submit</button><br>
+
+
 		<a href="http://jigsaw.w3.org/css-validator/check/referer">Validate</a>
+		</form>
 	</body>
 </html>
