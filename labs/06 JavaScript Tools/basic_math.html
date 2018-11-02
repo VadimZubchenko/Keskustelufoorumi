@@ -13,12 +13,14 @@
     <form action="" method="post" id="theForm">
         <fieldset>
             <p>Calculate a bulk book order.</p>
-			<div><label for="quantity">Quantity</label><input type="number" name="quantity" id="quantity" value="1" min="1" required></div>
+			<div><label for="quantity">Quantity</label><input type="number" name="quantity" id="quantity" value= "1" min="1" required></div>
 			<div><label for="price">Price Per Unit</label><input type="text" name="price" id="price" value="1.00" required></div>
 			<div><label for="tax">VAT (%)</label><input type="text" name="tax" id="tax" value="0.0" required></div>
 			<div><label for="discount">Discount</label><input type="text" name="discount" id="discount" value="0.00" required></div>
-			<div><label for="total">Total</label><input type="text" name="total" id="total" value="0.00"></div>
-			<div><input type="submit" value="Calculate" id="submit"></div>
+            <div><label for="shipping">Shipping</label><input type="text" name="shipping" id="shipping" value="0.00" required></div>
+            <div><label for="total">Total</label><input type="text" name="total" id="total" value="0.00"></div>
+
+            <div><input type="submit" value="Calculate" id="submit"></div>
         </fieldset>
     </form>
     <script src="js/shopping.js"></script>

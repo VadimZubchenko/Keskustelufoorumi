@@ -5,43 +5,57 @@
 // Function performs the calculation and returns false.
 function calculate() {
 	'use strict';
-	
-	// For storing the order total:
-	var total;
-    
-    // Get references to the form values:
-    var quantity = document.getElementById('quantity').value;
-    var price = document.getElementById('price').value;
-    var tax = document.getElementById('tax').value;
-    var discount = document.getElementById('discount').value;
+
+	// Get references to the form values:
+	var quantity = parseInt(document.getElementById('quantity').value);
+	var price = parseFloat(document.getElementById('price').value);
+	var tax = parseFloat(document.getElementById('tax').value);
+	var discount = parseFloat(document.getElementById('discount').value);
+	// add shipping filed
+	var shipping = parseFloat(document.getElementById('shipping').value);
 
 	// Add validation here later!
-	
+
 	// Calculate the initial total:
-	total = quantity * price;
-	console.log("total before tax: " + total);
-	
+
+	// For storing the order total:
+	var total = quantity * price;
+	console.log('total before tax: ' + total);
+
 	// Make the tax rate easier to use:
 	tax = tax / 100;
 	tax = tax + 1;
-	
+
 	// Factor in the tax:
 	total = total * tax;
-	console.log("total after tax: " + total);
-		
+	console.log('total after tax: ' + total);
+
+	//modify the JS code to double the discount
+	// applied when the quantity ordered is greater
+	// than 100 items
+	if (quantity > 100) {
+		discount = 2 * discount;
+		total = total - discount;
+	}
+	else {
+		total = total - discount;
+	}
 	// Factor in the discount:
-	total = total - discount;
-	console.log("total after discount: " + total);
+	console.log('total after discount: ' + total);
+
+	total = total + shipping;
+	// Factor in the shipping;
+	console.log('total after shipping:' + total);
 
 	// Format the total to two decimal places:
 	total = total.toFixed(2);
-	
+
 	// Display the total:
 	document.getElementById('total').value = total;
-	
+
 	// Return false to prevent submission:
 	return false;
-    
+
 } // End of calculate() function.
 
 // Function called when the window has been loaded.
@@ -49,9 +63,9 @@ function calculate() {
 function init() {
 	'use strict';
 
-    // Add an event listener to the form:
-    var theForm = document.getElementById('theForm');
-    theForm.onsubmit = calculate;
+	// Add an event listener to the form:
+	var theForm = document.getElementById('theForm');
+	theForm.onsubmit = calculate;
 
 } // End of init() function.
 
