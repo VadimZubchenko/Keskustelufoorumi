@@ -3,7 +3,6 @@
 var notes = new Array();
 
 function addItem() {
-	'use strict';
 	textbox = document.getElementById('item');
 	var itemText = textbox.value;
 	textbox.value = '';
