@@ -12,11 +12,8 @@
 
   <p><input type="url" id="item" placeholder="URL" autofocus/></p>
   <button id="urlButton">AJAX http request</button>
-  <p type="text" id="text">
-
-  </p>
-
-  <script type="text/javascript">
+  
+    <script type="text/javascript">
 
       (function() {
     var httpRequest;
@@ -78,8 +75,8 @@
 
 
 	  document.getElementById("urlButton").onclick = function() {
-		  var textbox = document.getElementById("item");
-		  var newURL = textbox.value;
+		  var text = document.getElementById("item");
+		  var newURL = text.value;
 
 	  	makeRequest2(newURL);
 
@@ -121,7 +118,7 @@
 	  function alertContents_2() {
 		  if (httpRequest2.readyState === 4) {
 			  if (httpRequest2.status === 404) {
-				alert("Site is DOWN!");
+				alert(" URL status: " + httpRequest2.status +".  Site is DONE!" );
 			  } else {
 				  alert('There was a problem with the request.');
 			  }
