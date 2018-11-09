@@ -16,6 +16,12 @@ window.onload = function() {
 	} else if (div.attachEvent) {
 		div.attachEvent("click", handleClick);
 	}
+	var button = document.getElementById("hoverme");
+	if (button.addEventListener) {
+		button.addEventListener("mouseover", mouseOver, false);
+	} else if (button.attachEvent) {
+		div2.attachEvent("mouseover", mouseOver());
+	}
 };
 
 function handleClick(e) {
@@ -28,10 +34,33 @@ function handleClick(e) {
 	}
 	alert("You clicked on " + target.id);
 }
+function mouseOver(e) {
+	var evt = e || window.event;
+	var target;
+	if (evt.target) {
+		target = evt.target;
+	} else {
+		target = evt.srcElement;
+	}
+	alert("Hover over me." + target.id);
+}
+function removeHandler() {
+	document.getElementById("hoverme").removeEventListener("mouseover", mouseOver);
+	document.getElementById("clickme").removeEventListener("click", handleClick);
+}
 
   </script>
 </head>
 <body>
 <span id="clickme">Click me!</span>
+<p></p>
+
+<p></p>
+<span id="hoverme">Don't click, just hover over me!</span>
+<p></p>
+
+<p></p>
+<button onclick="removeHandler()" id="myBtn">“turn off” event handlers</button>
+
 </body>
 </html>

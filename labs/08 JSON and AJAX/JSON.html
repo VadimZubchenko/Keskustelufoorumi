@@ -18,8 +18,54 @@ var fido2 = {
 var fidoString = JSON.stringify(fido2);
 console.log("We made a string from a dog! " + fidoString);
 
+//  Luodaan object
+var employee = {
+	name: { first: "Colin",
+		second: "Stephen" },
+	title: "Assistant Lecturer"
+}
+var uusiEmployee;
+
+//Convert your object to a JSON string myString and display it in a <div>
+function myFunction() {
+	uusiEmployee = JSON.stringify(employee);
+	var para = document.createElement("P");
+	var t = document.createTextNode(uusiEmployee);
+	para.appendChild(t);
+	document.getElementById("myDIV").appendChild(para);
+}
+// Convert the string back to a JS object myObject
+
+function myFunction_2() {
+	var i, x = ' ', y = ' ';
+	var myObject = JSON.parse(uusiEmployee);
+    var para = document.createElement("P");
+	for (i in myObject.name) {
+		x += myObject.name[i] + ' ' ;
+	}
+	var t = document.createTextNode(x);
+	para.appendChild(t);
+	document.getElementById("myDIV").appendChild(para);
+
+	for (i in myObject.title) {
+		y += myObject.title[i] + ' ' ;
+	}
+   var b = document.createTextNode(y);
+	para.appendChild(b);
+	document.getElementById("myDIV").appendChild(para);
+
+}
+
+
+
   </script>
 </head>
 <body>
+
+<button onclick="myFunction()">To String</button>
+<button onclick="myFunction_2()">Back to Object</button>
+<div id="myDIV">
+  A DIV element
+</div>
 </body>
 </html>

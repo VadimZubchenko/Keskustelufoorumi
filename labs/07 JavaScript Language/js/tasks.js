@@ -21,8 +21,6 @@ function addTask() {
 	// For the output:
 	var message = '';
 
-
-
 	if (itemText) {
     
 		// Add the item to the array:
@@ -34,6 +32,7 @@ function addTask() {
 			message += '<li>' + tasks[i] + '</li>';
 		}
 		message += '</ol>';
+		// Lisää HTML:ää sivulle
 		output.innerHTML = message;
         
 	} // End of task.value IF.

@@ -5,19 +5,50 @@
   <title>Map Coordinates</title>
   <script>
 	window.onload = init;
-	function init() {
-		var map = document.getElementById("map");
-		map.onmousemove = showCoords;
+
+    function init() {
+
+    	var map = document.getElementById("map");
+		// 'onmousemove' shows coords while mouse is moving
+    	map.onmousemove = showCoords;
+
 		var mydiv = document.getElementById("mydiv");
+
 		mydiv.onclick = addtext;
+        var map = document.getElementById('map')
+		// 'onclick' shows coords while click
+        map.onclick = myCoords;
+
 	}
-	
-	function showCoords(eventObj) {
+    function showCoords(eventObj) {
+
 		var coords = document.getElementById("coords");
 		var x = eventObj.clientX;
 		var y = eventObj.clientY;
 		coords.innerHTML = "Map coordinates: " + x + ", " + y;
+
 	}
+
+
+
+	function myCoords(eventObj) {
+		if (document.createTextNode){
+
+			// createElement method of the document object to add a new list <ul>
+			var li = document.createElement('LI');
+            var x = eventObj.clientX;
+			var y = eventObj.clientY;
+
+			// nested innerHTML assignment to put map's coordinates
+			li.innerHTML = "My track:   X coords: " + x + ",  Y coords: " + y;
+
+			// Append <li> to <ul> with id="myList"
+			document.getElementById("myList").appendChild(li);
+		} else {
+			alert("Looks like you have an old browser!");
+		}
+	}
+
 
 	function addtext(){
 		if (document.createTextNode){
@@ -29,10 +60,16 @@
 		}
 	}
   </script>
+
 </head>
 <body>
-	<img id="map" src="data/map.jpg">
+
+
+    <ul id="myList"></ul>
+    <img id="map" src="data/map.jpg">
 	<p id="coords">Move mouse over map to find coordinates...</p>
-	<div id="mydiv" style="border:1px solid red">I am a DIV! Click me.</div>
+	<div id="mydiv" style="border:1px solid red">Click here!</div>
+
+
 </body>
 </html>

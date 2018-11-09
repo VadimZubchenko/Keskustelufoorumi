@@ -10,14 +10,22 @@
     Make a request
   </span>
 
+  <p><input type="url" id="item" placeholder="URL" autofocus/></p>
+  <button id="urlButton">AJAX http request</button>
+  <p type="text" id="text">
+
+  </p>
 
   <script type="text/javascript">
-  (function() {
+
+      (function() {
     var httpRequest;
     var testUrl = 'data/story.json';
+
     // Use Github Gist when no web server is available
     // var testUrl = 'https://gist.githubusercontent.com/c0lin/571d38b984d41b44aacf/raw/story.json';
     document.getElementById("ajaxButton").onclick = function() { makeRequest(testUrl); };
+
 
     function makeRequest(url) {
       if (window.XMLHttpRequest) { // Mozilla, Safari, ...
@@ -43,7 +51,7 @@
       httpRequest.onreadystatechange = alertContents;
 
       // now do the actual AJAX request
-      httpRequest.open('GET', url);
+      httpRequest.open('GET', url, true);
       httpRequest.send();
     }
 
@@ -52,13 +60,81 @@
     function alertContents() {
       if (httpRequest.readyState === 4) {
         if (httpRequest.status === 200) {
-          alert(httpRequest.responseText);
+			alert(httpRequest.responseText);
         } else {
           alert('There was a problem with the request.');
         }
       }
     }
+
+
+
   })();
+
+  // make a simple “404” checker
+
+  (function() {
+	  var httpRequest2;
+
+
+	  document.getElementById("urlButton").onclick = function() {
+		  var textbox = document.getElementById("item");
+		  var newURL = textbox.value;
+
+	  	makeRequest2(newURL);
+
+	  };
+
+		  function makeRequest2(url) {
+
+		  	if (window.XMLHttpRequest) { // Mozilla, Safari, ...
+				  httpRequest2 = new XMLHttpRequest();
+			  } else if (window.ActiveXObject) { // IE
+				  try {
+					  httpRequest2 = new ActiveXObject("Msxml2.XMLHTTP");
+				  }
+				  catch (e) {
+					  try {
+						  httpRequest2 = new ActiveXObject("Microsoft.XMLHTTP");
+					  }
+					  catch (e) {
+					  }
+				  }
+			  }
+
+			  if (!httpRequest2) {
+				  alert('Giving up :( Cannot create an XMLHTTP instance');
+				  return false;
+			  }
+
+			  // set a callback function for when the httpRequest completes
+
+			  httpRequest2.onreadystatechange = alertContents_2;
+			  // now do the actual AJAX request
+			  httpRequest2.open('GET', url);
+			  httpRequest2.send();
+		  }
+
+		  // the callback
+		  // this will be run when the request completes (see above)
+
+	  function alertContents_2() {
+		  if (httpRequest2.readyState === 4) {
+			  if (httpRequest2.status === 404) {
+				alert("Site is DOWN!");
+			  } else {
+				  alert('There was a problem with the request.');
+			  }
+		  }
+	  }
+
+
+
+
+
+
+  })();
+
   </script>
 
 </body>
