@@ -8,11 +8,36 @@ if (window.location.hash == '#add' || notes.length === 0) {
 } else {
 	document.getElementById('addPage').style.display = 'none';
 }
-
+/*
+* ADD A NEW TEXT BUTTON
+ */
 document.querySelector('#addPage button').onclick = function() {
 	console.log('add note');
-	var title = document.querySelector('#addPage input').value;
-	var note = document.querySelector('#addPage textarea').value;
+	var title = document.querySelector('#addPage input');
+	var titleText = title.value;
+
+	var note = document.querySelector('#addPage textarea');
+	var noteText = note.value;
+
+
+	// Create a new object 'text':
+	var text = {title: titleText, note: noteText};
+	notes.push(text);
+	/*
+	* clear the title and note fields
+	*/
+	title.value = '';
+	note.value ='';
+	loadList();
+};
+/*
+* EDIT BUTTON
+ */
+document.querySelector('#editPage button').onclick = function() {
+	updateNote();
+	loadList();
+
+
 };
 
 /*
@@ -20,10 +45,18 @@ document.querySelector('#addPage button').onclick = function() {
  */ 
 document.querySelector('nav > ul > li:nth-child(1)').onclick = function() {
 	console.log('first link clicked');
-};
+	document.getElementById('editPage').style.display ='none';
+	document.getElementById('addPage').style.display ='block';
 
+};
+/*
+ * the 'block' is visible and 'none' into unvisible
+*/
 document.querySelector('nav > ul > li:nth-child(2)').onclick = function() {
 	console.log('second link clicked');
+	document.getElementById('addPage').style.display = 'none';
+	document.getElementById('editPage').style.display ='block';
+
 };
 
 
@@ -36,6 +69,7 @@ function updateNote() {
 	var updated = {title: title, note: note};
 	console.log(updated);
 	notes[id] = {title: title, note: note};
+
 }
 
 function display(element) {

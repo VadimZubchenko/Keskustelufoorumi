@@ -1,14 +1,35 @@
 //console.log('page loaded');
 
 console.log(document);
+// "anonymous function" that calls the specified function
+document.querySelector('#userForm').onkeydown = function () {
+	console.log('save');
+	// get a DOM object representing a form field.
+	var name = document.querySelector('#userForm input[type="text"]');
+	console.log(name);
+	document.querySelector('#summary h1').innerHTML = name.value;
 
-document.getElementById('save').onclick = save;
-document.querySelector('#userForm input[type="email"]').onkeypress = function() {
+	var paragraphs = document.querySelectorAll('#summary p');
+	console.log('found '+paragraphs.length+' p tags');
+
+	console.log('updating email');
+	var email = document.querySelector('#userForm input[type="email"]').value;
+	paragraphs[0].innerHTML = email;
+
+	console.log(data);
+	var data = document.querySelector('#userForm input[type="password"]');
+	paragraphs[1].innerHTML = data.value;
+
+};
+// Original 'email' with onkeydown listener
+/*
+document.querySelector('#userForm input[type="email"]').onkeydown = function() {
 	console.log('updating email');
 	var email = document.querySelector('#userForm input[type="email"]').value;
 	document.querySelector('#summary p').innerHTML = email;
 };
 
+// original code of 'save' function
 
 function save() {
 	console.log('save');
@@ -16,9 +37,10 @@ function save() {
 	var name = document.querySelector('#userForm input[type="text"]');
 	console.log(name);
 	document.querySelector('#summary h1').innerHTML = name.value;
-	var data = document.querySelectorAll('#userForm input');
+	var data = document.querySelector('#userForm input[type="password"]');
 	console.log(data);
 	var paragraphs = document.querySelectorAll('#summary p');
 	console.log('found '+paragraphs.length+' p tags');
-	paragraphs[1].innerHTML = 'Hello World!';
+	paragraphs[1].innerHTML = data.value;
 }
+*/
