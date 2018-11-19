@@ -2,7 +2,7 @@
 
 console.log(document);
 // "anonymous function" that calls the specified function
-document.querySelector('#userForm').onkeydown = function () {
+document.querySelector('#userForm').onkeyup= function () {
 	console.log('save');
 	// get a DOM object representing a form field.
 	var name = document.querySelector('#userForm input[type="text"]');
@@ -13,10 +13,10 @@ document.querySelector('#userForm').onkeydown = function () {
 	console.log('found '+paragraphs.length+' p tags');
 
 	console.log('updating email');
-	var email = document.querySelector('#userForm input[type="email"]').value;
-	paragraphs[0].innerHTML = email;
+	var email = document.querySelector('#userForm input[type="email"]');
+	paragraphs[0].innerHTML = email.value;
 
-	console.log(data);
+	console.log('data');
 	var data = document.querySelector('#userForm input[type="password"]');
 	paragraphs[1].innerHTML = data.value;
 

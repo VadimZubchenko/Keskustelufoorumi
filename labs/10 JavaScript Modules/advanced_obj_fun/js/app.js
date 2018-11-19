@@ -8,6 +8,7 @@
 	 * @param {string} name The name of your new to do list.
 	 */
 	function Todo(name) {
+
 		this.storage = new app.Store(name);
 		this.model = new app.Model(this.storage);
 		this.template = new app.Template();
@@ -16,9 +17,11 @@
 	}
 
 	var todo = new Todo('todos-vanillajs');
-
+	var button = 'clear-completed';
+	app.$(button);
 	function setView() {
 		todo.controller.setView(document.location.hash);
+		id.controller.setView(document.location.hash);
 	}
 	$on(window, 'load', setView);
 	$on(window, 'hashchange', setView);

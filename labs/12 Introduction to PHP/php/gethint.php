@@ -31,10 +31,12 @@ $a[] = "Ellen";
 $a[] = "Valtti";
 $a[] = "Vihtori";
 
+
+
 // get the q parameter from URL
 $q = $_REQUEST["q"];
 
-$hint = "";
+//$hint = "";
 
 // lookup all hints from array if $q is different from "" 
 if ($q !== "") {
@@ -42,15 +44,22 @@ if ($q !== "") {
     $len=strlen($q);
     foreach($a as $name) {
         if (stristr($q, substr($name, 0, $len))) {
+            //Encode an array in PHP to a string;
+            $hint[] = array('firstname' => $name);
+            /*
             if ($hint === "") {
-                $hint = $name;
+
             } else {
                 $hint .= ", $name";
             }
+            */
         }
     }
 }
 
 // Output "no suggestion" if no hint was found or output correct values 
-echo $hint === "" ? "no suggestion" : $hint;
+//echo $hint === "" ? "no suggestion" : $hint;
+
+//change to JSON format;
+echo json_encode($hint);
 ?>

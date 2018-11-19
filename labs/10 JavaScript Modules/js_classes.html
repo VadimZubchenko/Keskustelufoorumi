@@ -8,7 +8,9 @@
 function Coffee(roast, ounces) {
 	this.roast = roast;
 	this.ounces = ounces;
-	this.getSize = function() {
+	// Ominaisuuden getSize arvona on kerran suoritettava
+    // anonyymi funktio (IIFE).
+    this.getSize = function() {
 		if (this.ounces === 8) {
 			return "small";
 		} else if (this.ounces === 12) {
@@ -16,6 +18,7 @@ function Coffee(roast, ounces) {
 		} else if (this.ounces === 16) {
 			return "large";
 		}
+
 	};
 	this.order = function() {
 		var msg;
@@ -33,14 +36,70 @@ function Coffee(roast, ounces) {
 	};
 }
 
+// extend the Tea and Coffee prototypes by giving both a new method sip()
+Tea.prototype.sip = function () {
+	console.log('Hmm, tasty')
+};
+Coffee.prototype.sip2 = function () {
+	console.log('Hmm tasty')
+};
+
 var coffee = new Coffee("House Blend", 12);
 console.log(coffee.order());
-
+coffee.sip2();
 var darkRoast = new Coffee("Dark Roast", 16);
 console.log(darkRoast.order());
+darkRoast.sip2();
 
 var specialBlend = new Coffee("Special Blend", 200);
 console.log(specialBlend.order());
+specialBlend.sip2()
+
+function Tea(type, onces) {
+	this.type = type;
+	this.ounces = onces;
+	// // Ominaisuuden 'getSleepTime' arvona on kerran suoritettava
+	// anonyymi funktio (IIFE).
+	this.getSleepTime = function() {
+		if (this.ounces === 8) {
+			return "1 hour";
+		} else if (this.ounces === 12) {
+			return "2 hours";
+		} else if (this.ounces === 16) {
+			return "3 hours";
+		}
+
+	};
+	/*Myös ominaisuuden 'order' arvona on funktio.*/
+	this.order = function() {
+		var msg;
+		switch (this.getSleepTime()) {
+			case "1 hour":
+			case "2 hours":
+			case "3 hours":
+				msg = "You can go to sleep in " + this.getSleepTime() + " after drinking "
+                + this.ounces + ' ounces of ' + this.type + " tea." ;
+				break;
+			default:
+				msg = "Well, you'll can't asleep after drinking so much of" + this.type + "!";
+				break;
+		}
+		return msg;
+	};
+}
+
+var eveningTea = new Tea("black tea", 8);
+console.log(eveningTea.order());
+eveningTea.sip();
+
+var dayTea = new Tea("black tea", 12);
+console.log(dayTea.order());
+dayTea.sip();
+
+var morningTea = new Tea("black tea", 32);
+console.log(morningTea.order());
+morningTea.sip();
+
 
 </script>
 </head>

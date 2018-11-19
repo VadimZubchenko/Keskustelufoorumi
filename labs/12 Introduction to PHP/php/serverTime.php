@@ -1,3 +1,3 @@
 <?php
-echo date("H:i:s"); 
+echo rand(1,1000);
 ?>
