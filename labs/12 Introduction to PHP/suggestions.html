@@ -12,7 +12,7 @@ function showHint(str) {
                // document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
 				//Parse it to an JSON object and print it out in your Ui.
                 var myObj = JSON.parse(xmlhttp.responseText);
-				document.getElementById("demo").innerHTML = myObj.name;
+				document.getElementById("txtHint").innerHTML = myObj[0].firstname;
             }
         };
         xmlhttp.open("GET", "php/gethint.php?q=" + str, true);
