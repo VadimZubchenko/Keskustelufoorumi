@@ -44,10 +44,15 @@
 # These are mock implementations
 
 	function postPerson($parameters) {
-		# implements POST method for person
+        $file = "messages.txt";
+    	# implements POST method for person
 		# Example: POST /staffapi/person/id=13&firstname="John"&lastname="Doe"
 		$firstname=urldecode($parameters["firstname"]);
 		$lastname=urldecode($parameters["lastname"]);
+
+
+		file_put_contents($file, $data_array, FILE_APPEND);
+
 		echo "Posted ".$parameters["id"]." ".$firstname." ".$lastname;
 	}
 

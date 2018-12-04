@@ -20,7 +20,7 @@ class Controller
     }
 
     public function send() {
-        $this->model->add_message($_POST["message"],$_POST["nickname"]);
+        $this->model->add_message($_POST["message"]);
         header("Location: Chat.php?action=list_it");
     }
 }

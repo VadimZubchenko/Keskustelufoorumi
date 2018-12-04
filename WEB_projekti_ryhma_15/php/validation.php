@@ -4,8 +4,8 @@
 
 
     $servername = "localhost";
-    $username = "root";
-    $password = "0177";
+    $username = "vadimzu";
+    $password = "Nadym1971";
     $dbname = "keskustelupalsta";
 
     // Create connection

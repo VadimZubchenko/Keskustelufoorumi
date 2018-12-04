@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>geogram</title>
+</head>
+<body>
+
+<!-- call a Javascript function to send an XMLHttpRequest -->
+<script>
+	function showHint(str) {
+		if (str.length == 0) {
+			document.getElementById("txtHint").innerHTML = "";
+			return;
+		} else {
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					// document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+					//Parse it to an JSON object and print it out in your Ui.
+					var myObj = JSON.parse(xmlhttp.responseText);
+					document.getElementById("txtHint").innerHTML = myObj[0].firstname;
+				}
+			};
+			xmlhttp.open("GET", "php/geogram.php?q=" + str, true);
+			xmlhttp.send();
+		}
+	}
+</script>
+<form action="geogram.php" method="get">
+    <input type="text" name="location"/>
+    <button type="submit" onclick="makeRequest(this.value)">Submit</button>
+</form>
+<br/>
+
+</body>
+</html>

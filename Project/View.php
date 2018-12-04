@@ -86,11 +86,11 @@
             <!--Tekstiboksi ja lähetysnappula-->
             <div class="row send-wrap">
                 <div class="send-message">
-                    <div class="message-text">
-                        <textarea id="text" class="no-resize-bar form-control" rows="2" placeholder="Write a message..."></textarea>
-                    </div>
-                    <div class="send-button">
-                        <a class="btn" onclick="sendMes()">Send <i class="fa fa-send"></i></a>
+                    <form action="?action=send" method="post">
+
+                        <input type="text" name="message">
+                        <input type="submit" value="Send">
+                    </form>
                     </div>
                 </div>
             </div>
