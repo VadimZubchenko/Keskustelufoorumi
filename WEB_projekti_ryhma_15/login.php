@@ -1,10 +1,9 @@
 <?php
-
     session_start();
 
     $servername = "localhost";
-    $username = "vadimzu";
-    $password = "Nadym1971";
+    $username = "root";
+    $password = "Korhonen10";
     $dbname = "keskustelupalsta";
 
     // Create connection
@@ -18,7 +17,6 @@
     $name = $_POST['username'];
     $pass = $_POST['password'];
 
-    //$s = " select * from users where username = '$username' && password = '$pass'";
     $s = "SELECT * FROM users where username = '" . $name . "' AND password = '" . $pass . "'";
 
     $result = mysqli_query($conn, $s);
@@ -26,11 +24,10 @@
     $num = mysqli_num_rows($result);
 
     if ($num == 1){
+        $_SESSION["username"] = $name;
         header('location:forum.php'); // pitäis vissii olla php sivu
     }else{
-        header('location:index.php');// pitäis vissii olla php sivu
-
+        header('location:index.html');// pitäis vissii olla php sivu
     }
-
 
 ?>

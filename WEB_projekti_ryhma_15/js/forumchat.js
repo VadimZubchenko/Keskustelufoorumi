@@ -1,17 +1,44 @@
-function sendMes() {
-	var username = "Hannu";
-	var message = document.getElementById("text").value;
+// Get the container element
+var btnContainer = document.getElementById("jaska");
+
+// Get all buttons with class="nav-item" inside the container
+var btns = btnContainer.getElementsByClassName("nav-item");
+
+// Loop through the buttons and add the active class to the current/clicked button
+for (var i = 0; i < btns.length; i++) {
+	btns[i].addEventListener("click", function() {
+		var current = document.getElementsByClassName("active");
+		current[0].className = current[0].className.replace(" active", "");
+		this.className += " active";
+	});
+}
+
+var active_group = "1";
+
+function sendMes(username) {
+
+	var messagebox = document.getElementById("text");
+	var message = messagebox.value;
 	var message = message.replace(/[#_{}/\|<>]/g,' ');
 	var message = message.replace(/(\r\n|\n|\r)/gm, "<br>");
 
 	//Tähän current time
-	var timestamp = "14:00";
+	var date = new Date();
+	var day = date.getDate();
+	var month = date.getMonth();
+	var year = date.getFullYear();
+	var time = date.getTime();
+	var timestamp = time + " " + day + "." + month + "." + year;
 
-	//Tähän aktiivisen keskustelun hakeminen
-	var group_id = "1";
-
+	//Luo tekstiboxi
 	document.getElementById("messages2").appendChild(createMessagebox(username, message, timestamp));
-	insertMessage(username, message, group_id);
+	insertMessage(username, message, active_group);
+
+	//Tyhjennä messagebox
+	messagebox.value = "";
+
+	var element = document.getElementById("messages2");
+	element.scrollTop = element.scrollHeight - element.clientHeight;
 }
 
 //Luo ja palauta viestilaatikko elementti
@@ -23,7 +50,7 @@ function createMessagebox(username, message, timestamp) {
 	var e2 = document.createElement('small');
 	e2.innerHTML = message;
 	var e3 = document.createElement('small');
-	e3.innerHTML = timestamp;
+	e3.innerHTML = " <i>[" + timestamp + "]</i>";
 	e3.className = "time-right";
 
 	mydiv.appendChild(e1);
@@ -79,6 +106,8 @@ function clearMessages() {
 function selectMessage(group_id){
 	clearMessages();
 
+	active_group = group_id;
+
 	var ajaxRequest;  // The variable that makes Ajax possible!
 
 	try{
@@ -104,20 +133,39 @@ function selectMessage(group_id){
 			var myObject = JSON.parse(ajaxRequest.responseText);
 
 			for (var i = 0; i < myObject.length; i++) {
-
-				//Do something
 				//Rakenna message
 				var username = myObject[i]['sender_username'];
 				var message = myObject[i]['message'];
-				var timestamp = myObject[i]['timestamp'];
+				var timestamp = formatTimestamp(myObject[i]['timestamp']);
 
 				document.getElementById("messages2").appendChild(createMessagebox(username, message, timestamp));
 			}
 		}
-	}
+	};
 
 	var sql = "SELECT * FROM messages WHERE group_id = " + group_id;
 
 	ajaxRequest.open("GET", "php/select.php?q=" + sql, true);
 	ajaxRequest.send(null);
+}
+
+function formatTimestamp(timestamp) {
+	var ONE_DAY = 24 * 60 * 60 * 1000;
+
+	var date = new Date(timestamp);
+	var day = date.getDate();
+	var month = date.getMonth();
+	var year = date.getFullYear();
+	var hour = date.getHours();
+	var minutes = date.getMinutes();
+
+	if (hour < 10) {hour = "0" + hour}
+	if (minutes < 10) {minutes = "0" + minutes}
+
+	//Check if timestamp is today
+	if ((new Date().getTime() - date.getTime()) < ONE_DAY) {
+		return hour + ":" + minutes + " today";
+	} else {
+		return hour + ":" + minutes + " " + day + "." + month + "." + year;
+	}
 }

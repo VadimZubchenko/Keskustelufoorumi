@@ -1,8 +1,8 @@
 <?php
 
     $servername = "localhost";
-    $username = "vadimzu";
-    $password = "Nadym1971"; //Laita oman localhostin salasana tähän
+    $username = "root";
+    $password = "Korhonen10"; //Laita oman localhostin salasana tähän
     $dbname = "keskustelupalsta";
 
     // Create connection
